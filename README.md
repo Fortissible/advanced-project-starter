@@ -14,11 +14,11 @@ Each starter project includes built-in support for:
 ## Available Starters (Checkout the specific Branch)
 
 - [![My Skills](https://skillicons.dev/icons?i=kotlin)](https://skillicons.dev) **android-kotlin-xml**
-  - MVVM + Retrofit  
+  - MVVM + Retrofit + SQLite
   - Project Structure: Page-based with Clean Architecture
 
 - [![My Skills](https://skillicons.dev/icons?i=kotlin)](https://skillicons.dev) **android-kotlin-compose** 
-  - MVVM + Retrofit  
+  - MVVM + Retrofit + SQLite 
   - Project Structure: Page-based with Clean Architecture
 
 - [![My Skills](https://skillicons.dev/icons?i=swift)](https://skillicons.dev) **ios-swift-uikit**
