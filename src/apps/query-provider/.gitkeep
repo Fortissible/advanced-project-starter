@@ -1,0 +1,1 @@
+src/apps/query-provider manages query provider (e.g if using tanstack query than this to manage the behavior of QueryClientProvider with QueryClient)

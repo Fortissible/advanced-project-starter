@@ -1,0 +1,6 @@
+{
+  "detail": {
+    "back-btn": "Kembali ke Laman Utama",
+    "title": "Tampilan Detail dari {{detailType, capitalize}} - {{detailId}}"
+  }
+}

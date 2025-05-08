@@ -1,0 +1,1 @@
+src/apps/container for functional component top level wrapper of navigator, provider, error boundaries, analytics, etc.

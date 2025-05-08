@@ -1,42 +1,73 @@
-# Advanced Project Starter
+# How to run this Typescript ReactNative + NativeWind + Expo project starter 👋
 
-A collection of advanced starter templates for different platforms and languages, all following modern best practices in architecture, tooling, and development workflow.
+This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-Each starter project includes built-in support for:
-- **Dependency Injection**
-- **Reactive Programming**
-- **Localization & Internationalization (l10n & i18n)**
-- **Simple Auth Management Template**
-- **Advanced Routing & Navigation**
-- **Local and Remote Data Source Management**
-- **Clean Architecture Principles**
+## Starter
 
-## Available Starters (Checkout the specific Branch)
+This project was generated using this `npx create-expo-app --template blank-typescript` also using [NativeWind](https://www.nativewind.dev/getting-started/installation) for inline styling.
 
-- [![My Skills](https://skillicons.dev/icons?i=kotlin)](https://skillicons.dev) **android-kotlin-xml**
-  - MVVM + Retrofit + SQLite
-  - Project Structure: Page-based with Clean Architecture
+Starter project contains :
 
-- [![My Skills](https://skillicons.dev/icons?i=kotlin)](https://skillicons.dev) **android-kotlin-compose** 
-  - MVVM + Retrofit + SQLite 
-  - Project Structure: Page-based with Clean Architecture
+- Typescript, Eslint, Prettier (Code & typing convention management)
+- Lodash, date-fns, crypto-js, uuid/nanoid (General Utils)
+- Tsyringe (Injection)
+- React hook form + Zod/Yup (Form management)
+- Urlcat + Axios + Fetch + Tan Stack Query (Remotes management)
+- MMKV + Realm / Sqlite (Local management)
+- i18next (Localization & Internationalization)
+- Redux + Valtio + Zustand (Optional) + React Context (State management)
+- Native Tailwind + Tw + TwMerge + Clsx + Styled (Styling)
+- Jest (Optional) (Testing)
+- CI/CD third parties + Husky Hooks + Sentry + Firebase (CICD & Logs & Analytics)
 
-- [![My Skills](https://skillicons.dev/icons?i=swift)](https://skillicons.dev) **ios-swift-uikit**
-  - UIKit + VIPER + Swinject + ReactiveX + Realm
-  - Architecture: Clean Architecture
+## Get started
 
-- [![My Skills](https://skillicons.dev/icons?i=swift)](https://skillicons.dev) **ios-swift-swiftui**
-  - SwiftUI + VIPER + Swinject + ReactiveX + Realm  
-  - Architecture: Clean Architecture
+1. Install dependencies
 
-- [![My Skills](https://skillicons.dev/icons?i=react)](https://skillicons.dev) **web-react-ts**
-  - Vite + React + TypeScript + Tailwind
-  - Structure: Atomic Design + Modular Architecture
+   ```bash
+   npm install
+   ```
 
-- [![My Skills](https://skillicons.dev/icons?i=react)](https://skillicons.dev) **mobile-reactnative-ts**
-  - Expo + React Native + TypeScript + NativeWind  
-  - Structure: Atomic Design + Modular Architecture  
+2. Start the app
 
-- [![My Skills](https://skillicons.dev/icons?i=flutter)](https://skillicons.dev) **mobile-flutter**
-  - Provider + BLoC + Dio + SQLite  
-  - Project Structure: Page-based with Clean Architecture
+   ```bash
+    npx expo start
+   ```
+
+In the output, you'll find options to open the app in a
+
+- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
+- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
+- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+
+You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+
+## Clear project cache and dependencies
+```npx expo start -c```
+```rm -r node_modules package-lock.json```
+```npm cache clean --force```
+
+## Get a fresh project
+
+When you're ready, run:
+
+```bash
+npm run reset-project
+```
+
+This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+
+## Learn more
+
+To learn more about developing your project with Expo, look at the following resources:
+
+- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
+- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+
+## Join the community
+
+Join our community of developers creating universal apps.
+
+- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
+- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.

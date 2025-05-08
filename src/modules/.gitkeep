@@ -1,0 +1,3 @@
+src/modules for module main logic that can consist of view, viewmodel, 
+module-level route, module-level translation, module-level hooks, 
+module-level queries, module-level constant, and module-level stores
