@@ -1,0 +1,19 @@
+{
+  "recommendations": [
+    "orta.vscode-jest",
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "mhutchie.git-graph",
+    "nrwl.angular-console",
+    "wayou.vscode-todo-highlight",
+    "firsttris.vscode-jest-runner",
+    "redhat.vscode-yaml",
+    "quicktype.quicktype",
+    "pkief.material-icon-theme",
+    "zainchen.json",
+    "zignd.html-css-class-completion",
+    "lokalise.i18n-ally",
+    "usernamehw.errorlens"
+  ]
+}

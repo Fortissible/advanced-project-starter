@@ -1,42 +1,84 @@
-# Advanced Project Starter
+# React + TypeScript + Vite
 
-A collection of advanced starter templates for different platforms and languages, all following modern best practices in architecture, tooling, and development workflow.
+This project was generated using this `npm create vite@latest` with React + TypeScript also using Tailwind for inline styling.
 
-Each starter project includes built-in support for:
-- **Dependency Injection**
-- **Reactive Programming**
-- **Localization & Internationalization (l10n & i18n)**
-- **Simple Auth Management Template**
-- **Advanced Routing & Navigation**
-- **Local and Remote Data Source Management**
-- **Clean Architecture Principles**
+Starter project contains :
 
-## Available Starters (Checkout the specific Branch)
+- Typescript, Eslint, Prettier (Code & typing convention management)
+- Lodash, date-fns, crypto-js, uuid/nanoid (General Utils)
+- Tsyringe + reflect metadata (Injection)
+- React hook form + Zod/Yup (Form management)
+- Urlcat + Axios + Fetch + Tan Stack Query (Remotes management)
+- MMKV (Local management)
+- i18next (Localization & Internationalization)
+- Redux + Valtio + Zustand (Optional) + React Context (State management)
+- Tailwind + Tw + TwMerge + Clsx + Styled (Styling)
+- Jest (Optional) (Testing)
+- CI/CD third parties + Husky Hooks + Sentry + Firebase (CICD & Logs & Analytics)
 
-- [![My Skills](https://skillicons.dev/icons?i=kotlin)](https://skillicons.dev) **android-kotlin-xml**
-  - MVVM + Retrofit + SQLite
-  - Project Structure: Page-based with Clean Architecture
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-- [![My Skills](https://skillicons.dev/icons?i=kotlin)](https://skillicons.dev) **android-kotlin-compose** 
-  - MVVM + Retrofit + SQLite 
-  - Project Structure: Page-based with Clean Architecture
+Currently, two official plugins are available:
 
-- [![My Skills](https://skillicons.dev/icons?i=swift)](https://skillicons.dev) **ios-swift-uikit**
-  - UIKit + VIPER + Swinject + ReactiveX + Realm
-  - Architecture: Clean Architecture
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- [![My Skills](https://skillicons.dev/icons?i=swift)](https://skillicons.dev) **ios-swift-swiftui**
-  - SwiftUI + VIPER + Swinject + ReactiveX + Realm  
-  - Architecture: Clean Architecture
+## Get started
 
-- [![My Skills](https://skillicons.dev/icons?i=react)](https://skillicons.dev) **web-react-ts**
-  - Vite + React + TypeScript + Tailwind
-  - Structure: Atomic Design + Modular Architecture
+1. Install dependencies
 
-- [![My Skills](https://skillicons.dev/icons?i=react)](https://skillicons.dev) **mobile-reactnative-ts**
-  - Expo + React Native + TypeScript + NativeWind  
-  - Structure: Atomic Design + Modular Architecture  
+   ```bash
+   npm install
+   ```
 
-- [![My Skills](https://skillicons.dev/icons?i=flutter)](https://skillicons.dev) **mobile-flutter**
-  - Provider + BLoC + Dio + SQLite  
-  - Project Structure: Page-based with Clean Architecture
+2. Start the app
+
+   ```bash
+    npm run dev
+   ```
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+});
+```
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x';
+import reactDom from 'eslint-plugin-react-dom';
+
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+});
+```
