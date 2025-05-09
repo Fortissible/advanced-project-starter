@@ -45,6 +45,8 @@
       "text": "TODO:"
     }
   ],
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.preferences.importModuleSpecifier": "non-relative",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "prettier.documentSelectors": ["**/*.svg"],

@@ -10,7 +10,7 @@
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
@@ -19,9 +19,27 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* Import */
+    "baseUrl": ".",
+    "types": ["node"],
+    "paths": {
+      "@common/*": ["libs/common/*"],
+      "@modules/*": ["libs/modules/*"],
+      "@ui/*": ["libs/ui/*"],
+      "@src/*": ["src/*"]
+    }
   },
-  "include": ["src"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "libs/**/*.ts",
+    "libs/**/*.tsx",
+    "libs/**/*.js",
+    "libs/**/*.jsx"
+  ]
 }
