@@ -1,0 +1,6 @@
+{
+  "detail": {
+    "back-btn": "Back to Home",
+    "title": "Detail View of {{detailType, capitalize}} - {{detailId}}"
+  }
+}

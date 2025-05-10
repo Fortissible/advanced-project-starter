@@ -1,28 +1,107 @@
-import i18n from 'i18next';
-import { Trans, initReactI18next, useTranslation } from 'react-i18next';
-import LocaleOptions from './locale.config.type';
+import authTranslations from '@src/modules/auth/translations/auth.translation';
+import detailTranslations from '@src/modules/detail/translations/detail.translation';
+import homeTranslations from '@src/modules/home/translations/home.translation';
+import { createInstance } from 'i18next';
+import { capitalize } from 'lodash/capitalize';
+import { initReactI18next } from 'react-i18next';
+import LocaleOptions from './locale.type';
 
 const resources = {
-  en: {
-    translation: {},
+  [LocaleOptions.EN]: {
+    translation: {
+      ...authTranslations.en,
+      ...detailTranslations.en,
+      ...homeTranslations.en,
+    },
   },
-  ja: {
-    translation: {},
+  [LocaleOptions.ID]: {
+    translation: {
+      ...authTranslations.id,
+      ...detailTranslations.id,
+      ...homeTranslations.id,
+    },
   },
-};
+} as const;
 
-i18n.use(initReactI18next).init({
+export type LocaleResource = (typeof resources)[LocaleOptions.ID];
+
+export const i18n = createInstance({
   compatibilityJSON: 'v4',
+  debug: true,
+  defaultNS: 'translation',
   fallbackLng: LocaleOptions.ID,
-  lng: LocaleOptions.ID, //Use language from store
+  fallbackNS: false,
+  interpolation: {
+    escapeValue: false,
+  },
+  lng: LocaleOptions.ID, // USE FROM LOCALE STORE
+  ns: ['translation'],
+  react: {},
   resources,
 });
 
-function getTransComponent(key: string) {
-  return <Trans i18nKey={key} />;
-}
+i18n.use(initReactI18next);
+i18n.init();
 
 // subscribe store keys to auto update language on change value
 // subscribeKey(mainStore.state, 'locale', (value) => i18n.changeLanguage(value));
 
-export { getTransComponent, i18n, useTranslation };
+/**
+ * @example
+ * ```id.translation.json
+ * {
+ *   "foo": "{{text, capitalize}}"
+ * }
+ * ```
+ *
+ * ```ts
+ * i18n.t("foo", { text: "bar" }); // returns 'Bar'
+ * ```
+ */
+i18n.services.formatter?.addCached(
+  'capitalize',
+  () => (value) => capitalize(value),
+);
+
+/**
+ * @example
+ * ```
+ * {
+ *   "foo": "{{value, joinArrayWithComma}}"
+ * }
+ * ```
+ *
+ * ```ts
+ * i18n.t("foo", { value: ["hello", "world"] }); // returns 'hello,world'
+ * ```
+ */
+i18n.services.formatter?.addCached('joinArrayWithComma', () => (value) => {
+  if (!Array.isArray(value)) {
+    return `${value}`;
+  }
+
+  return value.join(',');
+});
+
+/**
+ * @example
+ * ```
+ * {
+ *   "foo": "{{value, joinArrayWithCommaAndSpace}}"
+ * }
+ * ```
+ *
+ * ```ts
+ * i18n.t("foo", { value: ["hello", "world"] }); // returns 'hello, world'
+ * ```
+ */
+i18n.services.formatter?.addCached(
+  'joinArrayWithCommaAndSpace',
+  () => (value) => {
+    if (!Array.isArray(value)) {
+      return `${value}`;
+    }
+
+    return value.join(', ');
+  },
+);
