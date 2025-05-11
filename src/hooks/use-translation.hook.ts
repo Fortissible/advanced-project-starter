@@ -1,25 +1,25 @@
 import { i18n } from '@src/configs/locale/locale.config';
-import LocaleOptions from '@src/configs/locale/locale.type';
+import useLocaleStore from '@src/hooks/use-locale-store.hook';
 import { type Namespace } from 'i18next';
 import { useEffect, useMemo, useState } from 'react';
 
 export default function useTranslation<NS extends Namespace>(
   ns: NS | null = null,
 ) {
-  // const { localeOptions } = useSnapshot(localeStore.state);
+  const { localeOptions } = useLocaleStore().state;
   const [ready, setReady] = useState(i18n.isInitialized);
 
   const tFunc = useMemo(
-    () => i18n.getFixedT(LocaleOptions.ID, ns),
-    [/*localeOptions,*/ ns],
+    () => i18n.getFixedT(localeOptions, ns),
+    [localeOptions, ns],
   );
 
-  // useEffect(() => {
-  //   // use single source of truth: valtio global state
-  //   if (i18n.language !== localeOptions) {
-  //     i18n.changeLanguage(localeOptions);
-  //   }
-  // }, [localeOptions]);
+  useEffect(() => {
+    // use single source of truth: redux global state
+    if (i18n.language !== localeOptions) {
+      i18n.changeLanguage(localeOptions);
+    }
+  }, [localeOptions]);
 
   useEffect(() => {
     const changeReady = () => setReady(true);

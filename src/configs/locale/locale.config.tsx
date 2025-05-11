@@ -1,3 +1,4 @@
+import { store } from '@src/configs/store/store.config';
 import authTranslations from '@src/modules/auth/translations/auth.translation';
 import detailTranslations from '@src/modules/detail/translations/detail.translation';
 import homeTranslations from '@src/modules/home/translations/home.translation';
@@ -34,7 +35,7 @@ export const i18n = createInstance({
   interpolation: {
     escapeValue: false,
   },
-  lng: LocaleOptions.ID, // USE FROM LOCALE STORE
+  lng: store.getState().locale.localeOptions, // USE FROM LOCALE STORE
   ns: ['translation'],
   react: {},
   resources,
@@ -43,8 +44,13 @@ export const i18n = createInstance({
 i18n.use(initReactI18next);
 i18n.init();
 
-// subscribe store keys to auto update language on change value
-// subscribeKey(mainStore.state, 'locale', (value) => i18n.changeLanguage(value));
+// Subscribe to store changes to update i18n language
+store.subscribe(() => {
+  const currentLocale = store.getState().locale.localeOptions;
+  if (i18n.language !== currentLocale) {
+    i18n.changeLanguage(currentLocale);
+  }
+});
 
 /**
  * @example

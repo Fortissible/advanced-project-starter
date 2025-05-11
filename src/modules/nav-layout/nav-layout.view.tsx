@@ -1,7 +1,8 @@
+import LocaleOptions from '@src/configs/locale/locale.type';
 import RouteNames from '@src/configs/router/router.names';
+import useNavLayoutViewModel from '@src/modules/nav-layout/nav-layout.view-model';
 import clsx from 'clsx';
-import { useState } from 'react';
-import { Outlet, useLocation, useNavigate } from 'react-router';
+import { Outlet } from 'react-router';
 
 const HEADER_HEIGHT = 64; // px
 const TAB_BAR_HEIGHT = 56; // px
@@ -13,13 +14,8 @@ const tabs = [
 ];
 
 export default function NavLayout() {
-  const [isEnabled, setIsEnabled] = useState(true);
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const handleLogout = () => {
-    navigate('/login', { replace: true });
-  };
+  const { isEnabled, navigate, location, handleLogout, localeStore } =
+    useNavLayoutViewModel();
 
   return (
     <div className="min-h-screen flex flex-col relative">
@@ -35,7 +31,13 @@ export default function NavLayout() {
             <input
               type="checkbox"
               checked={isEnabled}
-              onChange={() => setIsEnabled((prev) => !prev)}
+              onChange={() => {
+                const newLocale = isEnabled
+                  ? LocaleOptions.ID
+                  : LocaleOptions.EN;
+                localeStore.actions.setLocale(newLocale);
+                localeStore.actions.persist();
+              }}
               className="sr-only"
             />
             <div className="w-11 h-6 bg-gray-200 rounded-full relative transition">
