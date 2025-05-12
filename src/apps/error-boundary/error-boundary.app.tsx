@@ -28,10 +28,10 @@ export default class ErrorBoundaryApp extends React.Component<Props, State> {
     if (hasError) {
       return (
         <div>
-          <h1>Oooops!</h1>
+          <h1>Oooops! Something wrong happened</h1>
           <button
             data-testid="reload-button"
-            onClick={() => window.location.reload}
+            onClick={() => window.location.reload()}
             type="button"
           >
             Reload

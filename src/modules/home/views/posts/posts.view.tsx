@@ -25,7 +25,7 @@ const PostItem = memo(({ handleToDetail, title, id }: PostItemProps) => {
 });
 
 export default function PostView() {
-  const { handleToDetail, data, t } = usePostsViewModel();
+  const { handleToDetail, usePosts, t } = usePostsViewModel();
   const num: number = 0;
 
   return (
@@ -38,16 +38,25 @@ export default function PostView() {
       >
         {t('posts.title')}
       </p>
-      <div className="w-full max-w-lg">
-        {data?.posts.map((post) => (
-          <PostItem
-            key={post.id}
-            title={post.title}
-            id={post.id.toString()}
-            handleToDetail={handleToDetail}
-          />
-        ))}
-      </div>
+      {usePosts.isPending ? (
+        <div className="flex min-w-screen items-center justify-center bg-white">
+          <div className="flex w-screen justify-center items-center px-8">
+            <div className="pr-4">Loading...</div>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-500" />
+          </div>
+        </div>
+      ) : (
+        <div className="w-full max-w-lg">
+          {usePosts.data?.posts.map((post) => (
+            <PostItem
+              key={post.id}
+              title={post.title}
+              id={post.id.toString()}
+              handleToDetail={handleToDetail}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

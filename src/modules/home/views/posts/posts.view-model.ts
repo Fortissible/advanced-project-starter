@@ -5,15 +5,11 @@ import usePostsQuery from '@src/modules/home/views/posts/queries/use-posts.query
 export default function usePostsViewModel() {
   const { t } = useTranslation();
   const handleToDetail = useDetailNavigation();
-  const { data, isError, isFetched, isPending, refetch } = usePostsQuery();
+  const usePosts = usePostsQuery();
 
   return {
     handleToDetail,
-    data,
-    isError,
-    isFetched,
-    isPending,
-    refetch,
+    usePosts,
     t,
   };
 }

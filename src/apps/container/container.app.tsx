@@ -12,14 +12,14 @@ import { Provider } from 'react-redux';
 export default function ContainerApp() {
   return (
     <StrictMode>
-      <Provider store={store}>
-        <StoreApp />
-        <ErrorBoundaryApp>
+      <ErrorBoundaryApp>
+        <Provider store={store}>
+          <StoreApp />
           <QueryApp>
             <NavigationApp />
           </QueryApp>
-        </ErrorBoundaryApp>
-      </Provider>
+        </Provider>
+      </ErrorBoundaryApp>
     </StrictMode>
   );
 }

@@ -46,16 +46,25 @@ export default function ProductView() {
       >
         {t('products.title')}
       </p>
-      <div className="w-full max-w-lg">
-        {useProducts.data?.map((product) => (
-          <ProductItem
-            key={product.id}
-            title={product.title}
-            userId={product.id.toString()}
-            handleToDetail={handleToDetail}
-          />
-        ))}
-      </div>
+      {useProducts.isPending ? (
+        <div className="flex min-w-screen items-center justify-center bg-white">
+          <div className="flex w-screen justify-center items-center px-8">
+            <div className="pr-4">Loading...</div>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-500" />
+          </div>
+        </div>
+      ) : (
+        <div className="w-full max-w-lg">
+          {useProducts.data?.map((product) => (
+            <ProductItem
+              key={product.id}
+              title={product.title}
+              userId={product.id.toString()}
+              handleToDetail={handleToDetail}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

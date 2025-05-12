@@ -9,7 +9,7 @@ export default function LoginView() {
     <div className="flex min-w-screen min-h-screen items-center justify-center bg-white">
       <div className="w-full px-8">
         <h1 className="text-3xl font-bold text-blue-600 mb-6 text-center">
-          Login
+          Login to web-react-ts
         </h1>
 
         {/* Username */}

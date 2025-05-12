@@ -14,7 +14,7 @@ const tabs = [
 ];
 
 export default function NavLayout() {
-  const { isEnabled, navigate, location, handleLogout, localeStore } =
+  const { isEnabled, navigate, location, handleLogout, localeStore, t } =
     useNavLayoutViewModel();
 
   return (
@@ -24,7 +24,7 @@ export default function NavLayout() {
         className="fixed top-0 w-full flex justify-between items-center p-4 bg-gray-100 border-b z-20"
         style={{ height: `${HEADER_HEIGHT}px` }}
       >
-        <div className="text-xl font-semibold">Top Header</div>
+        <div className="text-xl font-semibold">web-react-ts</div>
         <div className="flex items-center space-x-4">
           <span>ID</span>
           <label className="inline-flex items-center cursor-pointer">
@@ -54,7 +54,7 @@ export default function NavLayout() {
             className="px-4 py-2 bg-red-500 text-white rounded"
             onClick={handleLogout}
           >
-            Logout
+            {t('logout')}
           </button>
         </div>
       </header>
@@ -77,10 +77,13 @@ export default function NavLayout() {
       >
         {tabs.map((tab) => {
           const isActive = location.pathname === tab.path;
+
           return (
             <button
               key={tab.path}
-              onClick={() => navigate(tab.path)}
+              onClick={() => {
+                navigate(tab.path);
+              }}
               className={clsx(
                 'flex-1 text-center',
                 'py-3 text-sm',
