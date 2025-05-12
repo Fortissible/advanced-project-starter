@@ -45,6 +45,7 @@ export type RouteStackParam = {
     | { params: PostRouteParam; screen: RouteNames.Posts }
     | { params: ProductRouteParam; screen: RouteNames.Products }
     | { params: UserRouteParam; screen: RouteNames.Users };
+  [RouteNames.NotFound]: undefined;
 };
 
 export type Route<T extends keyof RouteStackParam> = {

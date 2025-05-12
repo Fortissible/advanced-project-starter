@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { notFoundRoute } from 'libs/ui/templates/not-found-page.route';
 import loginRoute from 'src/modules/auth/views/login/login.route';
 import registerRoute from 'src/modules/auth/views/register/register.route';
 import detailRoute from 'src/modules/detail/detail.route';
@@ -25,7 +26,11 @@ export const Stack = createNativeStackNavigator<RouteStackParam>();
  * @description
  * Default routes.
  */
-export const defaultRoutes = [loginRoute, registerRoute] as const;
+export const defaultRoutes = [
+  loginRoute,
+  registerRoute,
+  notFoundRoute,
+] as const;
 
 export const authenticatedRoutes = [
   {
@@ -33,6 +38,7 @@ export const authenticatedRoutes = [
     name: RouteNames.TabNavigation,
   } as const,
   detailRoute,
+  notFoundRoute,
 ] as const;
 
 export default function RouteConfig<

@@ -7,6 +7,7 @@ enum RouteNames {
   Users = 'Users',
   Posts = 'Posts',
   Products = 'Products',
+  NotFound = 'NotFound',
 }
 
 export default RouteNames;

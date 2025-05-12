@@ -39,7 +39,12 @@ export default [
       ...tsPlugin.configs.recommended.rules,
       ...reactPlugin.configs.recommended.rules,
       ...reactHooksPlugin.configs.recommended.rules,
-      'prettier/prettier': 'error',
+      'prettier/prettier': [
+        'error',
+        {
+          endOfLine: 'auto',
+        },
+      ],
       'react/react-in-jsx-scope': 'off',
       'react/display-name': ['error', { ignoreTranspilerName: true }],
       '@typescript-eslint/no-explicit-any': 'warn',
