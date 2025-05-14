@@ -1,3 +1,5 @@
+import githubSearchTranslationEn from '../views/github-search/translation/en.translation.json';
+import githubSearchTranslationId from '../views/github-search/translation/id.translation.json';
 import postsTranslationEn from '../views/posts/translations/en.translation.json';
 import postsTranslationId from '../views/posts/translations/id.translation.json';
 import productsTranslationEn from '../views/products/translations/en.translation.json';
@@ -10,12 +12,14 @@ const homeTranslations = {
     ...postsTranslationEn,
     ...productsTranslationEn,
     ...usersTranslationEn,
+    ...githubSearchTranslationEn,
     logout: 'Logout Account',
   },
   id: {
     ...postsTranslationId,
     ...productsTranslationId,
     ...usersTranslationId,
+    ...githubSearchTranslationId,
     logout: 'Logout Akun',
   },
 } as const;

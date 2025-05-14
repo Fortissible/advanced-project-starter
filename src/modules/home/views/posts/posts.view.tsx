@@ -1,28 +1,8 @@
-import {
-  DetailRouteParams,
-  DetailType,
-} from '@src/modules/detail/detail.route';
 import usePostsViewModel from '@src/modules/home/views/posts/posts.view-model';
+import { ListItem } from '@ui/molecules/list-item.molecule';
+import { LoadingIndicator } from '@ui/molecules/loading-indicator.molecule';
 import clsx from 'clsx';
-import { memo } from 'react';
 import { twMerge } from 'tailwind-merge';
-
-type PostItemProps = {
-  id: string;
-  title: string;
-  handleToDetail: ({ id, title, type }: DetailRouteParams) => void;
-};
-
-const PostItem = memo(({ handleToDetail, title, id }: PostItemProps) => {
-  return (
-    <div
-      onClick={() => handleToDetail({ id, title, type: DetailType.posts })}
-      className="bg-pink-200 p-5 m-2 rounded cursor-pointer"
-    >
-      <p className="text-2xl">{title}</p>
-    </div>
-  );
-});
 
 export default function PostView() {
   const { handleToDetail, usePosts, t } = usePostsViewModel();
@@ -39,16 +19,11 @@ export default function PostView() {
         {t('posts.title')}
       </p>
       {usePosts.isPending ? (
-        <div className="flex min-w-screen items-center justify-center bg-white">
-          <div className="flex w-screen justify-center items-center px-8">
-            <div className="pr-4">Loading...</div>
-            <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-500" />
-          </div>
-        </div>
+        <LoadingIndicator />
       ) : (
         <div className="w-full max-w-lg">
           {usePosts.data?.posts.map((post) => (
-            <PostItem
+            <ListItem
               key={post.id}
               title={post.title}
               id={post.id.toString()}

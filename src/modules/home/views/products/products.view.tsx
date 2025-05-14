@@ -1,36 +1,8 @@
-import {
-  DetailRouteParams,
-  DetailType,
-} from '@src/modules/detail/detail.route';
 import useProductViewModel from '@src/modules/home/views/products/products.view-model';
+import { ListItem } from '@ui/molecules/list-item.molecule';
+import { LoadingIndicator } from '@ui/molecules/loading-indicator.molecule';
 import clsx from 'clsx';
-import { memo } from 'react';
 import { twMerge } from 'tailwind-merge';
-
-type ProductItemProps = {
-  title: string;
-  userId: string;
-  handleToDetail: ({ id, title, type }: DetailRouteParams) => void;
-};
-
-const ProductItem = memo(
-  ({ handleToDetail, title, userId }: ProductItemProps) => {
-    return (
-      <div
-        onClick={() =>
-          handleToDetail({
-            id: userId,
-            title,
-            type: DetailType.products,
-          })
-        }
-        className="bg-pink-200 p-5 m-2 rounded cursor-pointer"
-      >
-        <p className="text-2xl">{title}</p>
-      </div>
-    );
-  },
-);
 
 export default function ProductView() {
   const { handleToDetail, useProducts, t } = useProductViewModel();
@@ -47,19 +19,14 @@ export default function ProductView() {
         {t('products.title')}
       </p>
       {useProducts.isPending ? (
-        <div className="flex min-w-screen items-center justify-center bg-white">
-          <div className="flex w-screen justify-center items-center px-8">
-            <div className="pr-4">Loading...</div>
-            <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-500" />
-          </div>
-        </div>
+        <LoadingIndicator />
       ) : (
         <div className="w-full max-w-lg">
           {useProducts.data?.map((product) => (
-            <ProductItem
+            <ListItem
               key={product.id}
               title={product.title}
-              userId={product.id.toString()}
+              id={product.id.toString()}
               handleToDetail={handleToDetail}
             />
           ))}

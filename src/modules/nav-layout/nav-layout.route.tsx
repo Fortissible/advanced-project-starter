@@ -1,3 +1,4 @@
+import githubSearchRoute from '@src/modules/home/views/github-search/github-search.route';
 import postsViewRoute from '@src/modules/home/views/posts/posts.route';
 import productsViewRoute from '@src/modules/home/views/products/products.route';
 import usersViewRoute from '@src/modules/home/views/users/users.route';
@@ -14,5 +15,6 @@ export const tabNavViewRoute: RouteObject = {
     usersViewRoute,
     postsViewRoute,
     productsViewRoute,
+    githubSearchRoute,
   ],
 };

@@ -5,6 +5,7 @@ enum RouteNames {
   Users = '/users',
   Posts = '/posts',
   Products = '/products',
+  GithubSearch = '/github-search',
 }
 
 export default RouteNames;

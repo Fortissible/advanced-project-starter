@@ -11,6 +11,7 @@ const tabs = [
   { label: 'Posts', path: RouteNames.Posts },
   { label: 'Products', path: RouteNames.Products },
   { label: 'Users', path: RouteNames.Users },
+  { label: 'GithubSearch', path: RouteNames.GithubSearch },
 ];
 
 export default function NavLayout() {
