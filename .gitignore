@@ -1,0 +1,86 @@
+.env
+.gradle
+*.iml
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Built application files
+*.apk
+*.ap_
+*.aab
+
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+out/
+build/
+
+# Gradle files
+.gradle/
+**/build/
+!gradle-wrapper.jar
+
+# Local configuration files
+local.properties
+.gradle/
+*.iml
+.idea/
+
+# IntelliJ project files
+*.ipr
+*.iws
+.idea/
+
+# Android Studio Navigation Editor temp files
+.navigation/
+
+# Keystore files
+*.jks
+*.keystore
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Jetpack Compose related
+.compose-cache/
+
+# Log & crash reports
+*.log
+
+# Other IDE caches
+captures/
+.cxx/
+
+# KAPT/annotation processor generated
+**/build/generated/
+**/build/tmp/
+
+# Kotlin specific
+*.kotlin_module
+
+# MacOS file metadata
+*.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db
+
+# Optional: Exclude debug signing configs
+debug.keystore
