@@ -1,6 +1,6 @@
 package com.example.androidkotlincompose.modules.detail.presentations
 
-import com.example.androidkotlincompose.app.navigations.ScreenRoute
+import com.example.androidkotlincompose.core.navigations.ScreenRoute
 
 object DetailRoute : ScreenRoute {
     override val routeId = "detail"

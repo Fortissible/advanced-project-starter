@@ -1,4 +1,4 @@
-package com.example.androidkotlincompose.app.navigations
+package com.example.androidkotlincompose.core.navigations
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController

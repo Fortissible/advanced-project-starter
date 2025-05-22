@@ -1,6 +1,6 @@
 package com.example.androidkotlincompose.modules.home
 
-import com.example.androidkotlincompose.app.navigations.ScreenRoute
+import com.example.androidkotlincompose.core.navigations.ScreenRoute
 
 object HomeRoute : ScreenRoute {
     override val routeId = "home"

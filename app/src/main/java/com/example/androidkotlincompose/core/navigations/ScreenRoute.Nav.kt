@@ -1,4 +1,4 @@
-package com.example.androidkotlincompose.app.navigations
+package com.example.androidkotlincompose.core.navigations
 
 interface ScreenRoute {
     val route: String          // Full route, e.g., "detail_screen/{itemId}"

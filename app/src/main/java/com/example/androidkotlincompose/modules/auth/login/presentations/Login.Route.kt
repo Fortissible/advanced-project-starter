@@ -1,6 +1,6 @@
 package com.example.androidkotlincompose.modules.auth.login.presentations
 
-import com.example.androidkotlincompose.app.navigations.ScreenRoute
+import com.example.androidkotlincompose.core.navigations.ScreenRoute
 
 object LoginRoute : ScreenRoute {
     override val routeId = "login"

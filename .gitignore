@@ -1,4 +1,8 @@
 .env
+
+# Disable ENV for Native android based project
+/app/src/main/assets/env
+
 .gradle
 *.iml
 /local.properties
