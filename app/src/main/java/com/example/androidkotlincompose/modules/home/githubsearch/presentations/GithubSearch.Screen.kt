@@ -16,10 +16,14 @@ import com.example.androidkotlincompose.ui.components.template.listpage.ListPage
 
 @Composable
 fun GithubSearchScreen(navController: NavController){
-    ListPage (
+    ListPage(
         title = "GithubSearch",
         onItemClicked = {
             navController.navigate(DetailRoute.withArgs("githubsearch", "4"))
-        }
+        },
+        isLoading = false,
+        isEmpty = true,
+        error = null,
+        datas = emptyList()
     )
 }

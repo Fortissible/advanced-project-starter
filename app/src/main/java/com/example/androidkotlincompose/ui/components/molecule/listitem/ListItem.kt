@@ -13,16 +13,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ListItem(title: String, index: Int, onItemClicked: () -> Unit) {
+fun ListItem(itemId: String, title: String = "Dummy Title", index: Int, onItemClicked: (itemId: String) -> Unit, imageUrl: String? = null, detail: String? = null) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onItemClicked() },
+            .clickable { onItemClicked(itemId) },
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Text(text = "$title Item ${index + 1}", style = MaterialTheme.typography.titleMedium)
-            Text(text = "Tap to view detail", style = MaterialTheme.typography.bodyMedium)
+            Text(title, style = MaterialTheme.typography.titleMedium)
+            Text(text = detail ?: "Tap to view detail", style = MaterialTheme.typography.bodyMedium)
         }
     }
 }

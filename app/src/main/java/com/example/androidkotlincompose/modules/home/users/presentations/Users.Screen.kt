@@ -20,6 +20,10 @@ fun UsersScreen(navController: NavController){
         title = "Users",
         onItemClicked = {
             navController.navigate(DetailRoute.withArgs("user", "3"))
-        }
+        },
+        isLoading = false,
+        isEmpty = true,
+        error = null,
+        datas = emptyList()
     )
 }

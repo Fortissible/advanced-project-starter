@@ -28,7 +28,8 @@ class PostsRepositoryImpl(
                         val listPostModel = remotePosts.data.posts?.map { post ->
                             Post(
                                 id = post?.id ?: 0,
-                                title = post?.title ?: ""
+                                title = post?.title ?: "",
+                                detail = post?.body ?: ""
                             )
                         } ?: emptyList()
                         Resource.Success(listPostModel)

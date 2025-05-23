@@ -11,6 +11,10 @@ fun ProductsScreen(navController: NavController){
         title = "Product",
         onItemClicked = {
             navController.navigate(DetailRoute.withArgs("product", "2"))
-        }
+        },
+        isLoading = false,
+        isEmpty = true,
+        error = null,
+        datas = emptyList()
     )
 }

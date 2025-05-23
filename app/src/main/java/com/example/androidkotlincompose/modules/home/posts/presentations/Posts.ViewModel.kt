@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 data class PostsUIState(
-    val posts: List<Post> = emptyList(),
+    val data: List<Post> = emptyList(),
     val error: String? = null,
     val isLoading: Boolean = false,
     val isEmpty: Boolean = true,
@@ -32,18 +32,16 @@ class PostsViewModel(
 
         _postsUIState.value = _postsUIState.value.copy(
             isLoading = true,
-            posts = emptyList(),
+            data = emptyList(),
             isEmpty = true,
         )
 
         viewModelScope.launch {
-            val result = postsUseCase.getPosts()
-
-            when(result){
+            when(val result = postsUseCase.getPosts()){
                 is Resource.Empty -> {
                     _postsUIState.update {
                         it.copy(
-                            posts = emptyList(),
+                            data = emptyList(),
                             isLoading = false,
                             isEmpty = true
                         )
@@ -53,7 +51,7 @@ class PostsViewModel(
                 is Resource.Success -> {
                     _postsUIState.update {
                         it.copy(
-                            posts = result.data!!,
+                            data = result.data!!,
                             isLoading = false,
                             isEmpty = false,
                         )
