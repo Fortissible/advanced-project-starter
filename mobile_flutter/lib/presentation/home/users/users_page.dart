@@ -1,10 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_flutter/core/navigation/navigation_helper.dart';
 import 'package:mobile_flutter/core/navigation/route_helper.dart';
 import 'package:mobile_flutter/presentation/detail/detail_page_route_arg.dart';
+import 'package:mobile_flutter/presentation/home/users/users_provider.dart';
+import 'package:provider/provider.dart';
 
-class UsersPage extends StatelessWidget {
+class UsersPage extends StatefulWidget {
   const UsersPage({super.key});
+
+  @override
+  State<UsersPage> createState() => _UsersPageState();
+}
+
+class _UsersPageState extends State<UsersPage> {
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<UsersProvider>().getUsers();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,28 +35,46 @@ class UsersPage extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
         ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: 100, // Replace with your data length
-            itemBuilder: (context, index) {
-              return ListTile(
-                leading: CircleAvatar(child: Text('${index + 1}')),
-                title: Text('User Title #$index'),
-                subtitle: Text('Subtitle or description'),
-                onTap: () {
-                  NavigationHelper.navigateTo(
-                    RouteNames.detail,
-                    arguments: DetailPageRouteArg(
-                        id: index + 1,
-                        title: 'User Title #$index',
-                        desc: 'This is the user description for item #$index.',
-                        type: DetailType.users
-                    ),
-                  );
-                },
-              );
-            },
-          ),
+        Consumer<UsersProvider>(
+          builder: (ctx, provider, child) {
+            switch (provider.state) {
+              case GetUsersState.init:
+                return Center(child: Text("Processing..."));
+              case GetUsersState.loading:
+                return Center(child: CircularProgressIndicator());
+              case GetUsersState.done:
+                return Expanded(
+                  child: ListView.builder(
+                    itemCount: provider.users.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        leading: CircleAvatar(
+                          child: Image.network(provider.users[index].image),
+                        ),
+                        title: Text(provider.users[index].name),
+                        subtitle: Text(
+                          "${provider.users[index].email} - ${provider.users[index].phone}",
+                        ),
+                        onTap: () {
+                          NavigationHelper.navigateTo(
+                            RouteNames.detail,
+                            arguments: DetailPageRouteArg(
+                              id: provider.users[index].id,
+                              title: provider.users[index].name,
+                              desc:
+                                  "Details: ${provider.users[index].email} - ${provider.users[index].phone}",
+                              type: DetailType.users,
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                );
+              case GetUsersState.error:
+                return Center(child: Text("Error Happened..."));
+            }
+          },
         ),
       ],
     );

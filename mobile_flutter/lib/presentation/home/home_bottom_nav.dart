@@ -16,19 +16,27 @@ class HomeBottomNav extends StatefulWidget {
 class _HomeBottomNavState extends State<HomeBottomNav> {
   int _currentIndex = 0;
 
-  final List<Widget> _pages = const [
-    PostsPage(),
-    UsersPage(),
-    ProductsPage(),
-    GithubSearchPage(),
-  ];
-
   final List<String> _titles = const [
     'Posts',
     'Users',
     'Products',
     'GithubSearch',
   ];
+
+  Widget _buildPage(int index) {
+    switch (index) {
+      case 0:
+        return const PostsPage();
+      case 1:
+        return const UsersPage();
+      case 2:
+        return const ProductsPage();
+      case 3:
+        return const GithubSearchPage();
+      default:
+        return const SizedBox.shrink();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,21 +45,25 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
         title: Text(_titles[_currentIndex]),
         actions: [
           Padding(
-            padding: EdgeInsets.only(right: 16),
+            padding: const EdgeInsets.only(right: 16),
             child: ElevatedButton(
               onPressed: () {
                 NavigationHelper.navigateAndRemoveUntil(
                   RouteNames.login,
-                  (Route<dynamic> route) => false,
+                      (Route<dynamic> route) => false,
                 );
               },
-              child: Icon(Icons.logout),
+              child: const Icon(Icons.logout),
             ),
           ),
         ],
       ),
-      body: IndexedStack(index: _currentIndex, children: _pages),
+      body: _buildPage(_currentIndex), // Only builds the current page
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.black, // icon and label when selected
+        unselectedItemColor: Colors.black, // icon and label when not selected
+        selectedLabelStyle: const TextStyle(color: Colors.black),
+        unselectedLabelStyle: const TextStyle(color: Colors.black),
         currentIndex: _currentIndex,
         onTap: (newIndex) {
           setState(() {
@@ -59,14 +71,15 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
           });
         },
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.article), label: 'Posts'),
-          BottomNavigationBarItem(icon: Icon(Icons.group), label: 'Users'),
+          BottomNavigationBarItem(icon: Icon(Icons.article, color: Colors.black,), label: 'Posts'),
+          BottomNavigationBarItem(icon: Icon(Icons.group, color: Colors.black), label: 'Users'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Products',
-          ),
+              icon: Icon(Icons.shopping_cart, color: Colors.black), label: 'Products'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.search, color: Colors.black), label: 'GithubSearch'),
         ],
       ),
     );
   }
 }
+

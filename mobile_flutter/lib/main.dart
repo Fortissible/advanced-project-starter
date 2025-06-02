@@ -4,6 +4,8 @@ import 'package:mobile_flutter/core/navigation/route_helper.dart';
 import 'package:mobile_flutter/core/navigation/route_observer.dart';
 import 'package:mobile_flutter/di/injection.di.dart' as di;
 import 'package:mobile_flutter/presentation/home/posts/posts_provider.dart';
+import 'package:mobile_flutter/presentation/home/products/products_provider.dart';
+import 'package:mobile_flutter/presentation/home/users/users_provider.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
@@ -29,6 +31,12 @@ class _MobileFlutterState extends State<MobileFlutter> {
       providers: [
         ChangeNotifierProvider(
             create: (_) => di.getItLocator<PostsProvider>()
+        ),
+        ChangeNotifierProvider(
+            create: (_) => di.getItLocator<UsersProvider>()
+        ),
+        ChangeNotifierProvider(
+            create: (_) => di.getItLocator<ProductsProvider>()
         )
       ],
       child: MaterialApp(
@@ -42,21 +50,5 @@ class _MobileFlutterState extends State<MobileFlutter> {
         onGenerateRoute: RouteHelper.generateRoute,
       ),
     );
-    // return MultiBlocProvider(
-    //     providers: [],
-    //     child: MultiProvider(
-    //         providers: [],
-    //         child: MaterialApp(
-    //           title: 'Mobile Flutter',
-    //           theme: ThemeData(
-    //             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-    //           ),
-    //           initialRoute: RouteNames.login,
-    //           navigatorKey: NavigationHelper.navigatorKey,
-    //           navigatorObservers: [routeObserver],
-    //           onGenerateRoute: RouteHelper.generateRoute,
-    //         ),
-    //     )
-    // );
   }
 }

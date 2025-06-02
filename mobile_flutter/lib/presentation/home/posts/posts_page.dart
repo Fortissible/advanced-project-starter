@@ -41,7 +41,7 @@ class _PostsPageState extends State<PostsPage> {
           Consumer<PostsProvider>(
             builder: (ctx, postsProvider, child) {
               if (postsProvider.state == GetPostsState.loading) {
-                return CircularProgressIndicator();
+                return Center(child: CircularProgressIndicator());
               } else if (postsProvider.state == GetPostsState.done) {
                 return Expanded(
                   child: ListView.builder(
@@ -67,7 +67,7 @@ class _PostsPageState extends State<PostsPage> {
                   ),
                 );
               } else {
-                return Text("Error Happened");
+                return Center(child: Text("Error Happened"));
               }
             },
           ),
